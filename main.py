@@ -185,7 +185,7 @@ def main():
             aux_dfs=[]
             for question_id,question in enumerate(question_list):
                 st.write(f"Question: {question}")
-                full_prompt=pre_question_prompt+" "+question)#,question_prompt
+                full_prompt=pre_question_prompt+" "+question
                 print(full_prompt)
                 response = generate_response(full_prompt)
                 st.write(f"Response: {response['answer']}")
