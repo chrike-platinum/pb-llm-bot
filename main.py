@@ -38,6 +38,8 @@ PINECONE_INDEX_NAME=st.secrets['PINECONE_INDEX_NAME']
 PINECONE_API_KEY=st.secrets['PINECONE_API_KEY']#st.secrets["PINECONE_API_KEY"]
 PINECONE_ENVIRONMENT=st.secrets['PINECONE_ENVIRONMENT']
 
+pre_question_prompt="Answer the following question in Dutch:"
+
 if 'search_policy' not in st.session_state:
     st.session_state['search_policy'] = 'map_reduce'
 
@@ -184,7 +186,7 @@ def main():
             aux_dfs=[]
             for question_id,question in enumerate(question_list):
                 st.write(f"Question: {question}")
-                response = generate_response(question)#,question_prompt)
+                response = generate_response(pre_question_prompt+" "+question)#,question_prompt)
                 st.write(f"Response: {response['answer']}")
                 new_df=unpack_document_objects_to_dataframe(question,question_id,response['answer'],response['source_documents'])
                 aux_dfs.append(new_df)
