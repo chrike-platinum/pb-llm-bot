@@ -150,10 +150,10 @@ def to_excel(df: pd.DataFrame):
 # Streamlit app
 def main():
     # Logo
-    logo_image = "https://static.wixstatic.com/media/0a5b13_c07752f7a8324e568649f0341d2ff5e5~mv2.png"  # Replace with the path to the logo image
+    logo_image = "https://static.wixstatic.com/media/0a5b13_5016bac785d14ac9a630ae9236baeadb~mv2.png/v1/fit/w_2500,h_1330,al_c/0a5b13_5016bac785d14ac9a630ae9236baeadb~mv2.png"  # Replace with the path to the logo image
     st.image(logo_image, use_column_width=True)
     
-    st.title("CCEP policy assistant")
+    st.title("PB assistant bot")
 
     #st.subheader("upload documents to vectorDB")
     #source_doc = st.file_uploader("Upload source document", type="pdf", label_visibility="collapsed")
