@@ -99,7 +99,6 @@ pinecone.init(
 
 
 
-@st.cache_resource
 def load_pinecone_existing_index():
     pass
     docsearch = Pinecone.from_existing_index(
