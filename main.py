@@ -92,15 +92,12 @@ llm = AzureChatOpenAI(
     deployment_name=AZURE_OPENAI_GPT4_MODEL_NAME)
 
 
-
-pinecone.init(
-    api_key=PINECONE_API_KEY,
-    environment=PINECONE_ENVIRONMENT)
-
-
 @st.cache_resource
 def load_pinecone_existing_index():
-    pass
+    pinecone.init(
+    api_key=PINECONE_API_KEY,
+    environment=PINECONE_ENVIRONMENT)
+    
     docsearch = Pinecone.from_existing_index(
             index_name="qa-app",
             embedding=embedder,
