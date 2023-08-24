@@ -68,7 +68,7 @@ if 'QUESTION_PROMPT' not in  st.session_state:
       
 
 
-default_question="I am a worker at CCEP (Coca Cola), what is the policy for this question: how can I market to kids?"
+default_question="Hoeveel mag ik max opgeven voor kinderopvang?"
 
 
 
