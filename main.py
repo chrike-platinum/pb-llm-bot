@@ -185,7 +185,9 @@ def main():
             aux_dfs=[]
             for question_id,question in enumerate(question_list):
                 st.write(f"Question: {question}")
-                response = generate_response(pre_question_prompt+" "+question)#,question_prompt)
+                full_prompt=pre_question_prompt+" "+question)#,question_prompt
+                print(full_prompt)
+                response = generate_response(full_prompt)
                 st.write(f"Response: {response['answer']}")
                 new_df=unpack_document_objects_to_dataframe(question,question_id,response['answer'],response['source_documents'])
                 aux_dfs.append(new_df)
@@ -216,14 +218,17 @@ def main():
 
 # Generate response using OpenAI API
 def generate_response(question):#,question_prompt_input):
-    #print('in genarate response question_prompt',question_prompt_input)
+    print('in genarate response question_prompt',question)
     qa_sources_chain = load_qa_with_sources_chain(llm=llm, chain_type=st.session_state['search_policy'])#, verbose=True,question_prompt=question_prompt_input)
+    print("chain loaded")
     vectorstore=load_pinecone_existing_index()
+    print("vector store loaded")
     qa_chain = RetrievalQAWithSourcesChain(
                 combine_documents_chain=qa_sources_chain, 
                 retriever=vectorstore.as_retriever(),
                 return_source_documents=True
         )
+    print("QA chain loaded")
     print('question',question)
     answer=qa_chain({"question": question})
     return answer
