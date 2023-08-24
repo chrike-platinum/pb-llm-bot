@@ -103,7 +103,7 @@ def load_pinecone_existing_index():
     docsearch = Pinecone.from_existing_index(
             index_name="qa-app",
             embedding=embedder,
-            namespace="ccep_v1")
+            namespace="pb_v1")
     return docsearch
 
 
